@@ -1,11 +1,9 @@
-// Modules
+const { readFileSync, writeFileSync } = require('fs')
 
-const { john, peter } = require('./4-names');
-const {sayHi} = require('./5-utils');
-const { singlePerson, items } = require('./6-alternative-flavor')
-require('./7-mind-grenade')
+const first = readFileSync('./content/first.txt', 'utf8');
+const second = readFileSync('./content/second.txt', 'utf8');
 
-sayHi(john);
-sayHi(peter);
-sayHi('susan');
-console.log( singlePerson, items )
+console.log(first, second);
+
+writeFileSync('./content/result-sync.txt', `Here is the result : ${first}, ${second}`)
+
