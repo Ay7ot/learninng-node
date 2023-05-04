@@ -1,13 +1,8 @@
-const EventEmitter = require('events');
+const { createReadStream } = require('fs')
+const http = require('http')
 
-const customEmitter = new EventEmitter();
-
-customEmitter.on('response', (name, id)=>{
-    console.log(`data received with Name: ${name} and id: ${id}`);
-});
-
-customEmitter.on('response', ()=>{
-    console.log(`some other logic here`)
-}); 
-
-customEmitter.emit('response', 'john', 34); 
+http
+.createServer((req, res)=>{
+    const fileRead = createReadStream('./content/big-txt.txt', 'utf8')
+})
+.listen(5000)
